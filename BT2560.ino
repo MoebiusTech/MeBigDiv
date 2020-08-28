@@ -7,14 +7,14 @@
 //电机引脚
 //Motor pin
 #define PWMA 4     //A电机转速 A Motor speed
-#define DIRA1 A4   //26  
-#define DIRA2 A5    //27  //A电机方向 A Motor direction
-#define PWMB 6     //B电机转速   B Motor speed
+#define DIRA1 A4    
+#define DIRA2 A5    //A电机方向 A Motor direction
+#define PWMB 6      //B电机转速   B Motor speed
 #define DIRB1 43 
 #define DIRB2 42    //B电机方向 Motor direction
 #define PWMC 11     //C电机转速  C Motor speed
 #define DIRC1 34 
-#define DIRC2 35  //C电机方向  C Motor direction
+#define DIRC2 35   //C电机方向  C Motor direction
 #define PWMD 7     //D电机转速  D Motor speed
 #define DIRD1 37 
 #define DIRD2 36   //D电机方向 D Motor direction
