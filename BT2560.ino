@@ -36,6 +36,7 @@
 #define MOTORD_BACKOFF(pwm)    do{digitalWrite(DIRD1,HIGH);digitalWrite(DIRD2,LOW); analogWrite(PWMD,pwm);}while(0)
 
 #define SERIAL Serial
+#define HC06 Serial3
 //#define LOG_DEBUG
 
 //#ifdef LOG_DEBUG
@@ -145,14 +146,14 @@ void STOP()
   MOTORA_STOP(Motor_PWM);MOTORB_STOP(Motor_PWM);
   MOTORC_STOP(Motor_PWM);MOTORD_STOP(Motor_PWM);
 }
-void UART_Control()
-{
-  char Uart_Date;
- if(SERIAL.available())
-  {
-   
-   Uart_Date = SERIAL.read();
-  }
+void UART_Control() {
+    char Uart_Date;
+    if (Serial.available()) {
+        Uart_Date = Serial.read();
+    } else if (HC06.available()) {
+        Uart_Date = HC06.read();
+        Serial.println(Uart_Date);
+    }
 
   switch(Uart_Date)
   {
@@ -267,7 +268,9 @@ void IO_init()
 }
 void setup()
 {
-  SERIAL.begin(9600);
+  Serial.begin(9600);
+  Serial2.begin(9600);
+  HC06.begin(9600);
   IO_init();
   SERIAL.print("Start");
   STOP(); 
